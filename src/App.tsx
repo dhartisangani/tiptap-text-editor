@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react'
+import Editor from './components/Editor'
 
-function App() {
+const App = () => {
+  const [dark, setDark] = useState(false)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <div className={dark ? 'dark bg-gray-900 text-white min-h-screen' : 'bg-white text-black min-h-screen'}>
+      <div className="max-w-4xl mx-auto py-10">
+        <button
+          className="mb-4 p-2 border rounded"
+          onClick={() => setDark(!dark)}
         >
-          Learn React
-        </a>
-      </header>
+         Swith Mode
+        </button>
+        <Editor />
+      </div>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
